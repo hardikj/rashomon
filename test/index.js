@@ -10,7 +10,6 @@ var cass = require('cassandra-driver');
 var RouteSwitch = require('routeswitch');
 var uuid = require('node-uuid');
 var makeClient = require('../lib/index');
-//TODO: change this name 
 var router = require('../test/test_router.js');
 
 function tidFromDate(date) {
@@ -49,7 +48,11 @@ describe('DB backend', function() {
         })
         .then(function(db) {
             DB = db;
+<<<<<<< HEAD
             return router.makeRouter();
+=======
+            return testServer();
+>>>>>>> test using http interface
         });
     });
     describe('createTable', function() {
