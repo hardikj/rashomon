@@ -32,6 +32,11 @@ function deepEqual (result, expected) {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+// FIXME: Use the REST interface!
+>>>>>>> updated tests to use the http handler
 var DB = require('../lib/db.js');
 
 describe('DB backend', function() {
@@ -49,21 +54,33 @@ describe('DB backend', function() {
         .then(function(db) {
             DB = db;
 <<<<<<< HEAD
+<<<<<<< HEAD
             return router.makeRouter();
 =======
             return testServer();
 >>>>>>> test using http interface
+=======
+            return router.makeRouter();
+>>>>>>> updated tests to use the http handler
         });
     });
     describe('createTable', function() {
         this.timeout(15000);
         it('simple table', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/simpleTable',
                 method: 'put',
                 body: {
                     // keep extra redundant info for primary bucket table reconstruction
                     domain: 'restbase.cassandra.test.local',
+=======
+                url: '/v1/en.wikipedia.org/simpleTable',
+                method: 'put',
+                body: {
+                    // keep extra redundant info for primary bucket table reconstruction
+                    domain: 'en.wikipedia.org',
+>>>>>>> updated tests to use the http handler
                     table: 'simpleTable',
                     options: { durability: 'low' },
                     attributes: {
@@ -92,10 +109,17 @@ describe('DB backend', function() {
         });
         it('table with more than one range keys', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/multiRangeTable',
                 method: 'put',
                 body: {
                     domain: 'restbase.cassandra.test.local',
+=======
+                url: '/v1/en.wikipedia.org/multiRangeTable',
+                method: 'put',
+                body: {
+                    domain: 'en.wikipedia.org',
+>>>>>>> updated tests to use the http handler
                     table: 'multiRangeTable',
                     options: { durability: 'low' },
                     attributes: {
@@ -121,10 +145,17 @@ describe('DB backend', function() {
         });
         it('table with secondary index', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable',
                 method: 'put',
                 body: {
                     domain: 'restbase.cassandra.test.local',
+=======
+                url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable',
+                method: 'put',
+                body: {
+                    domain: 'en.wikipedia.org',
+>>>>>>> updated tests to use the http handler
                     table: 'simpleSecondaryIndexTable',
                     options: { durability: 'low' },
                     attributes: {
@@ -154,10 +185,17 @@ describe('DB backend', function() {
         });
         it('table with secondary index and no tid in range', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/unversionedSecondaryIndexTable',
                 method: 'put',
                 body: {
                     domain: 'restbase.cassandra.test.local',
+=======
+                url: '/v1/en.wikipedia.org/unversionedSecondaryIndexTable',
+                method: 'put',
+                body: {
+                    domain: 'en.wikipedia.org',
+>>>>>>> updated tests to use the http handler
                     table: 'unversionedSecondaryIndexTable',
                     options: { durability: 'low' },
                     attributes: {
@@ -191,7 +229,11 @@ describe('DB backend', function() {
     describe('put', function() {
         it('simple put insert', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/simpleTable/',
+=======
+                url: '/v1/en.wikipedia.org/simpleTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: 'simpleTable',
@@ -207,7 +249,11 @@ describe('DB backend', function() {
         });
         it('simple put insert query on table with more than one range keys', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/multiRangeTable/',
+=======
+                url: '/v1/en.wikipedia.org/multiRangeTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: "multiRangeTable",
@@ -224,7 +270,11 @@ describe('DB backend', function() {
         });
         it('simple put update', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/simpleTable/',
+=======
+                url: '/v1/en.wikipedia.org/simpleTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: 'simpleTable',
@@ -241,7 +291,11 @@ describe('DB backend', function() {
         });
         it('put with if not exists and non index attributes', function() {
             return router.request({
+<<<<<<< HEAD
                     url: '/v1/restbase.cassandra.test.local/simpleTable/',
+=======
+                    url: '/v1/en.wikipedia.org/simpleTable/',
+>>>>>>> updated tests to use the http handler
                     method: 'put',
                     body: {
                         table: "simpleTable",
@@ -259,7 +313,11 @@ describe('DB backend', function() {
         });
         it('put with if and non index attributes', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/simpleTable/',
+=======
+                url: '/v1/en.wikipedia.org/simpleTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: "simpleTable",
@@ -277,7 +335,11 @@ describe('DB backend', function() {
         });
         it('index update', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/',
+=======
+                url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: "simpleSecondaryIndexTable",
@@ -293,7 +355,11 @@ describe('DB backend', function() {
                 deepEqual(response, {status:201});
 
                 return router.request({
+<<<<<<< HEAD
                     url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/',
+=======
+                    url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                     method: 'put',
                     body: {
                         table: "simpleSecondaryIndexTable",
@@ -310,7 +376,11 @@ describe('DB backend', function() {
                 deepEqual(response, {status:201});
 
                 return router.request({
+<<<<<<< HEAD
                     url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/',
+=======
+                    url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                     method: 'put',
                     body: {
                         table: "simpleSecondaryIndexTable",
@@ -327,7 +397,11 @@ describe('DB backend', function() {
                 deepEqual(response, {status:201});
 
                 return router.request({
+<<<<<<< HEAD
                     url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/',
+=======
+                    url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                     method: 'put',
                     body: {
                         table: "simpleSecondaryIndexTable",
@@ -344,7 +418,11 @@ describe('DB backend', function() {
                 deepEqual(response, {status:201});
 
                 return router.request({
+<<<<<<< HEAD
                     url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/',
+=======
+                    url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                     method: 'put',
                     body: {
                         table: "simpleSecondaryIndexTable",
@@ -360,7 +438,11 @@ describe('DB backend', function() {
             .then(function(response) {
                 deepEqual(response, {status:201});
                 return router.request({
+<<<<<<< HEAD
                     url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/',
+=======
+                    url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                     method: 'put',
                     body: {
                         table: "simpleSecondaryIndexTable",
@@ -377,7 +459,11 @@ describe('DB backend', function() {
                 deepEqual(response, {status:201});
 
                 return router.request({
+<<<<<<< HEAD
                     url: '/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/',
+=======
+                    url: '/v1/en.wikipedia.org/simpleSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                     method: 'put',
                     body: {
                         table: "simpleSecondaryIndexTable",
@@ -397,7 +483,11 @@ describe('DB backend', function() {
         });
         it('unversioned index', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/unversionedSecondaryIndexTable/',
+=======
+                url: '/v1/en.wikipedia.org/unversionedSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: "unversionedSecondaryIndexTable",
@@ -413,7 +503,11 @@ describe('DB backend', function() {
         });
         it('unversioned index update', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/unversionedSecondaryIndexTable/',
+=======
+                url: '/v1/en.wikipedia.org/unversionedSecondaryIndexTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: "unversionedSecondaryIndexTable",
@@ -433,7 +527,11 @@ describe('DB backend', function() {
     describe('get', function() {
         it('simple between', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/simpleTable/',
+=======
+                url: '/v1/en.wikipedia.org/simpleTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'get',
                 body: {
                     table: "simpleTable",
@@ -462,7 +560,11 @@ describe('DB backend', function() {
         });
         it('simple get', function() {
             return router.request({
+<<<<<<< HEAD
                 url:'/v1/restbase.cassandra.test.local/simpleTable/',
+=======
+                url:'/v1/en.wikipedia.org/simpleTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'get',
                 body: {
                     table: "simpleTable",
@@ -489,7 +591,11 @@ describe('DB backend', function() {
         });
         it("index query for values that doesn't match any more", function() {
             return router.request({
+<<<<<<< HEAD
                 url: "/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/",
+=======
+                url: "/v1/en.wikipedia.org/simpleSecondaryIndexTable/",
+>>>>>>> updated tests to use the http handler
                 method: "get",
                 body: {
                     table: "simpleSecondaryIndexTable",
@@ -503,7 +609,11 @@ describe('DB backend', function() {
                 deepEqual(response.status, 404);
                 deepEqual(response.body.items.length, 0);
                 return router.request({
+<<<<<<< HEAD
                     url: "/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/",
+=======
+                    url: "/v1/en.wikipedia.org/simpleSecondaryIndexTable/",
+>>>>>>> updated tests to use the http handler
                     method: "get",
                     body: {
                         table: "simpleSecondaryIndexTable",
@@ -521,7 +631,11 @@ describe('DB backend', function() {
 
         it("index query for current value", function() {
             return router.request({
+<<<<<<< HEAD
                 url: "/v1/restbase.cassandra.test.local/simpleSecondaryIndexTable/",
+=======
+                url: "/v1/en.wikipedia.org/simpleSecondaryIndexTable/",
+>>>>>>> updated tests to use the http handler
                 method: "get",
                 body: {
                     table: "simpleSecondaryIndexTable",
@@ -562,10 +676,17 @@ describe('DB backend', function() {
         this.timeout(5000);
         it('create table', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/typeTable',
                 method: 'put',
                 body: {
                     domain: 'restbase.cassandra.test.local',
+=======
+                url: '/v1/en.wikipedia.org/typeTable',
+                method: 'put',
+                body: {
+                    domain: 'en.wikipedia.org',
+>>>>>>> updated tests to use the http handler
                     table: 'typeTable',
                     options: { durability: 'low' },
                     attributes: {
@@ -594,7 +715,11 @@ describe('DB backend', function() {
         });
         it('put', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/typeTable/',
+=======
+                url: '/v1/en.wikipedia.org/typeTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: "typeTable",
@@ -623,7 +748,11 @@ describe('DB backend', function() {
         });
         it('put 2', function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/typeTable/',
+=======
+                url: '/v1/en.wikipedia.org/typeTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'put',
                 body: {
                     table: "typeTable",
@@ -652,7 +781,11 @@ describe('DB backend', function() {
         });
         it("get", function() {
             return router.request({
+<<<<<<< HEAD
                 url: '/v1/restbase.cassandra.test.local/typeTable/',
+=======
+                url: '/v1/en.wikipedia.org/typeTable/',
+>>>>>>> updated tests to use the http handler
                 method: 'get',
                 body: {
                     table: "typeTable",
@@ -699,17 +832,22 @@ describe('DB backend', function() {
         });
         it('drop table', function() {
             this.timeout(15000);
+<<<<<<< HEAD
             return router.request({
                 url: "/v1/restbase.cassandra.test.local/typeTable",
                 method: "delete",
                 body: {}
             });
+=======
+            return DB.dropTable('org.wikipedia.en', 'typeTable');
+>>>>>>> updated tests to use the http handler
         });
     });
 
     describe('dropTable', function() {
         this.timeout(15000);
         it('drop a simple table', function() {
+<<<<<<< HEAD
             return router.request({
                 url: "/v1/restbase.cassandra.test.local/simpleTable",
                 method: "delete",
@@ -733,6 +871,14 @@ describe('DB backend', function() {
                     body: {}
                 })
             });
+=======
+            return Promise.all([
+                DB.dropTable('org.wikipedia.en', 'simpleTable'),
+                DB.dropTable('org.wikipedia.en', 'multiRangeTable'),
+                DB.dropTable('org.wikipedia.en', 'simpleSecondaryIndexTable'),
+                DB.dropTable('org.wikipedia.en', 'unversionedSecondaryIndexTable')
+            ]);
+>>>>>>> updated tests to use the http handler
         });
     });
 });
