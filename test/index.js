@@ -545,13 +545,19 @@ describe('DB backend', function() {
     //TODO: implement this using http handler when alternate rest-url for delete item are supported 
     describe('delete', function() {
         it('simple delete query', function() {
-            return DB.delete('local.test.cassandra.restbase', {
-                table: "simpleTable",
-                attributes: {
-                    tid: tidFromDate(new Date('2013-08-09 18:43:58-0700')),
-                    key: "testing"
+            return router.request({
+                url: "/v1/restbase.cassandra.test.local/simpleTable",
+                method: "delete",
+                body: {
+                    table: "simpleTable",
+                    attributes: {
+                        tid: tidFromDate(new Date('2013-08-09 18:43:58-0700')),
+                        key: "testing"
+                    }
                 }
-            });
+            }).then(function(response){
+                deepEqual(response.status, 204);
+            });;
         });
     });
 
