@@ -572,8 +572,8 @@ describe('DB backend', function() {
                     table: 'typeTable',
                     options: { durability: 'low' },
                     attributes: {
-                        string: 'string',
-                        blob: 'blob',
+                        timeuuid: 'timeuuid',
+                        uuid: 'uuid',
                         set: 'set<string>',
                         'int': 'int',
                         varint: 'varint',
@@ -581,8 +581,8 @@ describe('DB backend', function() {
                         //'float': 'float',
                         'double': 'double',
                         'boolean': 'boolean',
-                        timeuuid: 'timeuuid',
-                        uuid: 'uuid',
+                        string: 'string',
+                        blob: 'blob',
                         timestamp: 'timestamp',
                         json: 'json'
                     },
@@ -594,6 +594,38 @@ describe('DB backend', function() {
             .then(function(response) {
                 deepEqual(response.status, 201);
             });
+        });
+        it('throws Error on updating above table', function() {
+            assert.throws(
+                function() {
+                    router.request({
+                        url: '/v1/restbase.cassandra.test.local/typeTable',
+                        method: 'put',
+                        body: {
+                            domain: 'restbase.cassandra.test.local',
+                            table: 'typeTable',
+                            options: { durability: 'low' },
+                            attributes: {
+                                string: 'string',
+                                blob: 'blob',
+                                set: 'set<string>',
+                                'int': 'int',
+                                varint: 'varint',
+                                //decimal: 'decimal',
+                                //'float': 'float',
+                                'double': 'double',
+                                'boolean': 'boolean',
+                                uuid: 'uuid',
+                                timestamp: 'timestamp',
+                                json: 'json'
+                            },
+                            index: [
+                                { attribute: 'string', type: 'hash' },
+                            ]
+                        }
+                    })
+                }, Error, "Table already exists"
+            );
         });
         it('put', function() {
             return router.request({
